@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block name %}{{ search.expr }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Search results</h2>
+  <p><ul>
+    {% for a in artist %}      
+      <li><a href="/artist/{{ a.IdArtist }}">{{ a.Name }}</a></li>
+    {% endfor %}
+    </ul>
+  </p>
+{% endblock %}
+
+
+  

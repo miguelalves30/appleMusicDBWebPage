@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}AppleMusic database {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h2>About</h2>
+<p>This web application illustrates the use of the AppleMusic
+database. The application is built using 
+<a href="https://pymysql.readthedocs.io/">PyMySQL</a>,
+<a href="https://flask.palletsprojects.com">Flask</a>, and
+<a href="https://jinja.palletsprojects.com">Jinja</a>.
+</p>
+
+<h2>Some database statistics</h2>
+<table>
+<tr>
+  <th>Items</th>
+  <th>Count</th>
+</tr>
+<tr>
+  <td>Music</td>
+  <td>{{ stats.music }}</td>
+</tr>
+<tr>
+  <td>Artist</td>
+  <td>{{ stats.artist }}</td>
+</tr>
+<tr>
+  <td>Users</td>
+  <td><a href="/user">{{stats.user }}</a></td>
+</tr>
+</table>
+
+
+<h2>Sample functionality</h2>
+
+<h3>Music</h3>
+<p>
+   <a href="/music">List all</a>
+</p>
+<p>Get music info:
+<form name="mid" action="javascript:window.open('/music/'+document.forms['mid'].elements['id'].value,'_self')">
+   Music Id:<input value="6" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Search by name:
+<form name="msearch" action="javascript:window.open('/music/search/'+document.forms['msearch'].elements['expr'].value,'_self')">
+  <input name="expr" id="expr" value="Unravel" required/>
+  <input type="submit" value="search"/>
+</form>
+</p>
+
+<h3>Artists</h3>
+<p>
+   <a href="/artist">List all</a>
+</p>
+<p>Get artist info:
+<form name="aid" action="javascript:window.open('/artist/'+document.forms['aid'].elements['id'].value,'_self')">
+   Artist Id:<input value="22" name="id" type="number" min="1"/><input type="submit" value="get"/>
+</form>
+</p>
+  
+<p>Search by name:
+  <form name="asearch" action="javascript:window.open('/artist/search/'+document.forms['asearch'].elements['expr'].value,'_self')">
+    <input name="expr" id="expr" value="A" required/>
+    <input type="submit" value="search"/>
+  </form>
+</p>
+
+
+<h3>Genres</h3>
+<p>
+   <a href="/genres">List all</a>
+</p>
+
+<h3>Albums</h3>
+<p>
+   <a href="/album">List all</a>
+</p>
+
+<h3>Playlists</h3>
+<p>
+   <a href="/playlist/">List all</a>
+</p> 
+
+{% endblock %}

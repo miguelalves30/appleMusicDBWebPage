@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block name %}{{ search.expr }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Search results</h2>
+  <p><ul>
+    {% for m in music %}      
+      <li><a href="/music/{{ m.IdMusic }}">{{ m.Name }}</a></li>
+    {% endfor %}
+    </ul>
+  </p>
+{% endblock %}

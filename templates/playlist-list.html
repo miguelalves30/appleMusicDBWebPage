@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Playlists{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <table> 
+  <tr>
+    <th><b>PlaylistName</b></th>
+    <th><b>Creator</b></th>
+   </tr>
+   
+  {% for p in playlist %}
+    <tr>
+        <td><a href="/playlist/{{ p.IdPlaylist }}">{{p.PlaylistName }}</a></td>
+        <td>{{ p.UserName }}</td>
+    </tr>
+  {% endfor %}
+
+  <table> 
+    <tr>
+      <th><b>Playlist Name</b></th>
+      <th><b>Number of Songs</b></th>
+     </tr>
+
+
+  {% for n in nmr %}
+    <tr>
+        <td>{{ n.Name }}</td>
+        <td>{{ n.NmrSongs }}</td>
+    </tr>
+  {% endfor %}
+</tr>
+  </table>
+{% endblock %}

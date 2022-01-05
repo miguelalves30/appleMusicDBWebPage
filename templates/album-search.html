@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block name %}{{ search.expr }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Search results</h2>
+  <p><ul>
+    {% for m in music %}      
+      <li><a href="/artist/{{ m.IdArtist }}">{{ m.Album }}</a></li>
+    {% endfor %}
+    </ul>
+  </p>
+{% endblock %}
+
+<! –– Not beeing used ––> 
+@APP.route('/album/search/<expr>/')
+  def search_album(expr):
+    search = { 'expr': expr }
+    
+    album = db.execute(
+        ' SELECT IdArtist, Album'
+        ' FROM MUSIC '
+        ' WHERE ALBUM LIKE \'%' + expr + '%\''
+      ).fetchall()
+    
+  
+    return render_template('artist-search.html', 
+             search=search,album = album)

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ playlist.Name }} {% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>Playlist info</h2>
+  <p>
+    <b>IdPlaylist: </b>{{ playlist.IdPlaylist }}
+  </p>
+  <p>
+    <b>Name: </b>{{ playlist.Name }}
+  </p>
+  <p>
+    <b>Music: </b><ul>
+    {% for m in music %}      
+      <li><a href="/music/{{ m.IdMusic }}">{{ m.Name }}</a></li>
+    {% endfor %}
+    </ul>
+  </p>
+
+  
+{% endblock %}
+
